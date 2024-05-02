@@ -43,3 +43,13 @@ class RegisterViewSet(viewsets.ViewSet):
         else:
             return Response(serializer.errors,status=400)
         
+
+class UserViewSet(viewsets.ModelViewSet):
+    permission_classes=[permissions.IsAuthenticated]
+    queryset=User.objects.all()
+    serializer_class=RegisterSerializer
+
+    def list(self,request):
+        queryset=User.objects.all()
+        serializer=self.serializer_class(queryset,many=True)
+        return Response(serializer.data)

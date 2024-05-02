@@ -7,5 +7,5 @@ from . import views
 router=DefaultRouter()
 router.register('register',views.RegisterViewSet,basename='register')
 router.register('login',views.LoginViewSet,basename='login')
-
+router.register('users',views.UserViewSet,basename='users')
 urlpatterns=router.urls
